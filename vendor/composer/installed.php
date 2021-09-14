@@ -1,24 +1,24 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-master',
+    'version' => 'dev-master',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '605eb96e8de5995a437bed7e2fb517c7dae2eaf3',
     'name' => 'gabrielcursinoalves/ecommerce',
   ),
   'versions' => 
   array (
     'gabrielcursinoalves/ecommerce' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-master',
+      'version' => 'dev-master',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '605eb96e8de5995a437bed7e2fb517c7dae2eaf3',
     ),
     'phpmailer/phpmailer' => 
     array (
