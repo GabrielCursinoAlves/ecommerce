@@ -14,8 +14,8 @@
 			"data"=>[]
 		];
 
-		public function __construct($opts = array(),$tpl_dir = "/views/"
-		){
+		public function __construct($opts = array(),
+		$tpl_dir = "/views/"){
 
 			$this->options = array_merge($this->defaults,$opts);
 
@@ -39,7 +39,7 @@
 		}
 
 		private function setData($data = array()){
-
+		
 			foreach($data as $key => $value){
 
 				$this->tpl->assign($key,$value);
@@ -47,7 +47,8 @@
 
 		}
 
-		public function setTpl($name,$data = array(),$returnHTML = false){
+		public function setTpl($name,$data = array(),
+		$returnHTML = false){
 
 			$this->setData($data);
 

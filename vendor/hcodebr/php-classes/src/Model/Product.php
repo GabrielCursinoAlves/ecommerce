@@ -17,6 +17,18 @@
 	    	return $result; 
 	    }
 
+	    public static function checklist($list){
+
+	    	foreach($list as &$row){
+	    		
+	    		$p = new Product();
+	    		$p->setData($row);
+	    		$row = $p->getValues();
+	    	}
+
+	    	return $list;
+	    }
+
 		public function save(){
 
 	    	$sql = new Sql();
@@ -66,7 +78,7 @@
 	    	$dir = $_SERVER['DOCUMENT_ROOT'].
 	    	DIRECTORY_SEPARATOR."res".DIRECTORY_SEPARATOR."site".
 	    	DIRECTORY_SEPARATOR."img".DIRECTORY_SEPARATOR."products".
-	    	$this->getidproduct().".jpg";
+	    	DIRECTORY_SEPARATOR.$this->getidproduct().".jpg";
 
 	    	if(file_exists($dir)){
 
@@ -93,7 +105,7 @@
 	    	$dir = $_SERVER['DOCUMENT_ROOT'].
 	    	DIRECTORY_SEPARATOR."res".DIRECTORY_SEPARATOR."site".
 	    	DIRECTORY_SEPARATOR."img".DIRECTORY_SEPARATOR."products".
-	    	$this->getidproduct().".jpg";
+	    	DIRECTORY_SEPARATOR.$this->getidproduct().".jpg";
 
 	    	$extension = explode(".",$file['name']);
 	    	$extension = end($extension);
