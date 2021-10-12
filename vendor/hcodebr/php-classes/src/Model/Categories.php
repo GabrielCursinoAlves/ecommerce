@@ -71,6 +71,57 @@
 	    	."views".DIRECTORY_SEPARATOR."categories-menu.html",
 	    	implode('',$html));
 	    }
+
+	    public function getProducts($related = true){
+
+	    	$sql = new Sql();
+
+	    	if($related === true){
+
+	    		$results = $sql->select("SELECT *FROM tb_products 
+	    		WHERE idproduct IN(
+				SELECT a.idproduct FROM tb_products a
+				INNER JOIN tb_productscategories b USING(idproduct)
+				WHERE b.idcategory = :idcategory);",[
+					":idcategory"=>$this->getidcategory()
+				]);
+	    	}else{
+
+	    		$results = $sql->select("SELECT *FROM tb_products 
+	    		WHERE idproduct NOT IN(
+				SELECT a.idproduct FROM tb_products a
+				INNER JOIN tb_productscategories b USING(idproduct)
+				WHERE b.idcategory = :idcategory);",[
+					":idcategory"=>$this->getidcategory()
+				]);
+	    	}
+
+	    	return $results;
+
+	    }
+
+	    public function addProduct(Product $product){
+
+	    	$sql = new Sql();
+
+	    	$sql->query("INSERT INTO tb_productscategories(idcategory,
+	    	idproduct)VALUES(:idcategory,:idproduct);",[
+	    		":idcategory"=>$this->getidcategory(),
+	    		":idproduct"=>$product->getidproduct()
+	    	]);
+	    }
+
+	    public function removeProduct(Product $product){
+
+	    	$sql = new Sql();
+
+	    	$sql->query("DELETE FROM tb_productscategories WHERE
+	    	idcategory = :idcategory AND idproduct = :idproduct;",[
+	    		":idcategory"=>$this->getidcategory(),
+	    		":idproduct"=>$product->getidproduct()
+	    	]);
+	    }
+
 	}
 	
 
