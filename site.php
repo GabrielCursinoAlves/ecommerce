@@ -18,15 +18,22 @@ $app->get('/', function() {
 
 $app->get("/categories/:idcategory",function($idcategory){
 
+   $page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
+
 	$categories = new Categories();
 
 	$categories->get((int)$idcategory);
+
+   $pagination = $categories->getProductsPage($page);
+
+   $pages = $categories->Pagination($pagination['pages']);
 
 	$page = new Page();
 
    	$page->setTpl("category",[
    		"category"=>$categories->getValues(),
-   		"products"=>Product::checklist($categories->getProducts())
+   		"products"=>$pagination['data'],
+         "pages"=>$pages
    	]);
 });
 
