@@ -101,7 +101,7 @@
 
 	    }
 
-	    public function getProductsPage($page=1,$itemsPerPage=8){
+	    public function getProductsPage($page=1,$itemsPerPage=3){
 
 	    	$start = ($page - 1) * $itemsPerPage;
 

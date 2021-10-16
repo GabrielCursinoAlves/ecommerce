@@ -38,12 +38,9 @@
                 <div class="product-pagination text-center">
                     <nav>
                         <ul class="pagination">
-
-                        {loop="$pages"}
-                            <li><a href="{$value.link}">{$value.page}</a></li>
-                        </ul>
-                        {/loop}
-                        
+                            {loop="$pages"}
+                            <li><a href="{$value.link}">{$value.page}</a>
+                            {/loop}
                         </ul>
                     </nav>                        
                 </div>

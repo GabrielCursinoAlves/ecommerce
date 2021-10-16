@@ -22,9 +22,6 @@
 	    			$this->values[$fieldName] : NULL;
 	    			break;
 	    		
-	    		default:
-	    			# code...
-	    			break;
 	    	}
 	    }
 
