@@ -110,7 +110,12 @@
                                         <tbody>
                                             <tr class="cart-subtotal">
                                                 <th>Subtotal</th>
-                                                <td><span class="amount">R$<?php echo formatPrice($cart["vlsubtotal"]); ?>
+                                                <td>
+                                                    <?php if( $cart["vlsubtotal"] != '' ){ ?>
+
+                                                    <span class="amount">R$<?php echo formatPrice($cart["vlsubtotal"]); ?>
+
+                                                    <?php } ?>
 
                    
                                                 </span></td>
@@ -118,7 +123,10 @@
 
                                             <tr class="shipping">
                                                 <th>Frete</th>
+                                                <?php if( $cart["vlfreight"] != '' ){ ?>
+
                                                 <td>R$<?php echo formatPrice($cart["vlfreight"]); ?>
+
 
                                                 <?php if( $cart["nrdays"] != '' ){ ?> 
                                                 <small>
@@ -126,6 +134,8 @@
                                                 <?php } ?>
 
                                                 </td>
+                                                <?php } ?>
+
                                             </tr>
 
                                             <tr class="order-total">
