@@ -12,6 +12,7 @@
 		const ERROR = "UserError";
 		const SECRET = "HcodePhp7_Secret";
 		const SECRET_IV = "HcodePhp7_Secret_IV";
+		const ERROR_REGISTER = "UserErrorRegister";
 		
 		public static function getFromSession(){
 
@@ -107,6 +108,7 @@
 	    public static function logout(){
 
 	    	$_SESSION[User::SESSION] = NULL;
+	    	$_SESSION['registerValues'] = NULL;
 	    }
 
 	    public static function listall(){
@@ -310,12 +312,48 @@
 			$_SESSION[self::ERROR] = NULL;
 		}
 
+		public static function setErrorRegister($msg){
+
+			$_SESSION[self::ERROR_REGISTER] = $msg;
+		}
+
+		public static function getErrorRegister(){
+
+			$msg = (isset($_SESSION[self::ERROR_REGISTER]) && 
+			$_SESSION[self::ERROR_REGISTER]) ? $_SESSION[self::ERROR_REGISTER] : '';
+
+			self::clearErrorRegister();
+
+			return $msg;
+
+		}
+
+		public static function clearErrorRegister(){
+
+			$_SESSION[self::ERROR_REGISTER] = NULL;
+		}
+
+		public static function checkLoginExist($login){
+
+			$sql = new Sql();
+
+			$results = $sql->select("SELECT *FROM tb_users WHERE 
+			deslogin = :deslogin",[
+				"deslogin"=>$login
+			]);
+
+			return (count($results) > 0);
+
+		}
+
 		public static function getPasswordHash($password){
 
 			return password_hash($password, PASSWORD_DEFAULT,[
 				'cost'=>12
 			]);
 		}
+
+
 
 	}
 	

@@ -7,8 +7,8 @@
 	class Mailer{
 
 	    const USERNAME = "ga72147@gmail.com";
-	    const PASSWORD = "";
 	    const NAME_FROM = "Hcode Store";
+	    const PASSWORD = "";
 
 	    private $mail;
 
@@ -50,13 +50,13 @@
 			//Whether to use SMTP authentication
 			$this->mail->SMTPAuth = true;
 
-			$this->mail->Username = Mailer::USERNAME;
+			$this->mail->Username = self::USERNAME;
 
 			//Password to use for SMTP authentication
-			$this->mail->Password = Mailer::PASSWORD;
+			$this->mail->Password = self::PASSWORD;
 
 			//Set who the message is to be sent from
-			$this->mail->setFrom(Mailer::USERNAME,Mailer::
+			$this->mail->setFrom(self::USERNAME,self::
 			NAME_FROM);
 
 			//Set who the message is to be sent to
@@ -72,9 +72,9 @@
 			$this->mail->msgHTML($html);
 
 			//Replace the plain text body with one created manually
-			$this->mail->AltBody = '<h1>Título do E-mail</h1>
-			<p>Teste de envio de e-mail do curso php 7</p>
-			';
+			//$this->mail->AltBody = '<h1>Título do E-mail</h1>
+			//<p>Teste de envio de e-mail do curso php 7</p>
+			//';
 	    }
 
 	    public function Send(){
