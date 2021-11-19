@@ -152,6 +152,8 @@
 	    	$data = $results[0];
 
 	    	$data['desperson'] = utf8_encode($data['desperson']);
+
+	    	$this->setData($data);
 	    }
 
 	    public function update(){
@@ -183,7 +185,7 @@
 	    	]);
 	    }
 
-	    public static function getforgot($email){
+	    public static function getforgot($email,$inadmin=true){
 
 	    	$sql = new Sql();
 
@@ -223,7 +225,15 @@
 
 	    			$code = base64_encode($code);
 
-	    			$link = "http://www.hcodecommerce.com.br/admin/forgot/reset?code=".$code;
+	    			if($inadmin === true){
+
+	    				$link = "http://www.hcodecommerce.com.br/admin/forgot/reset?code=".$code;
+
+	    			}else{
+
+	    				$link = "http://www.hcodecommerce.com.br/forgot/reset?code=".$code;
+
+	    			}
 
 	    			$mailer = new Mailer($data["desemail"],
 	    			$data["desperson"],"Redefinir Senha da

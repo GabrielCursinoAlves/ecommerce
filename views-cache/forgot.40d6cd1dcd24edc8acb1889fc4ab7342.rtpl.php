@@ -318,7 +318,6 @@
     width: 100%;
   }
 
-
   .clear {
     display: block;
     clear: both;
