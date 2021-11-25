@@ -10,6 +10,7 @@
 
 		const SESSION = "User";
 		const ERROR = "UserError";
+		const SUCCESS = "UserSuccess";
 		const SECRET = "HcodePhp7_Secret";
 		const SECRET_IV = "HcodePhp7_Secret_IV";
 		const ERROR_REGISTER = "UserErrorRegister";
@@ -320,6 +321,27 @@
 		public static function clearError(){
 
 			$_SESSION[self::ERROR] = NULL;
+		}
+
+		public static function setSuccess($msg){
+
+			$_SESSION[self::SUCCESS] = $msg;
+		}
+
+		public static function getSuccess(){
+
+			$msg = (isset($_SESSION[self::SUCCESS]) && 
+			$_SESSION[self::SUCCESS]) ? $_SESSION[self::SUCCESS] : '';
+
+			self::clearSuccess();
+
+			return $msg;
+
+		}
+
+		public static function clearSuccess(){
+
+			$_SESSION[self::SUCCESS] = NULL;
 		}
 
 		public static function setErrorRegister($msg){

@@ -41,7 +41,7 @@
                     <div class="user-menu">
                         <ul>
                             <li>
-                                <a href="#">
+                                <a href="/profile">
                                     <i class="fa fa-user"></i> Minha Conta
                                 </a>
                             </li>
