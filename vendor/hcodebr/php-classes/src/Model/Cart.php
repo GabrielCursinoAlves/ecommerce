@@ -272,11 +272,18 @@
 	  	}
 
 	  	public function updateFreight(){
-
+	  		
 	  		if($this->getdeszipcode() != ''){
 
 	  			$this->setFreight($this->getdeszipcode());
 	  		}
+	  	}
+
+	  	public function getValues(){
+
+	  		$this->getCalculateTotal();
+
+	  		return parent::getValues();
 	  	}
 
 	  	public function getCalculateTotal(){
@@ -288,15 +295,8 @@
 	  		$this->setvlsubtotal($totals['vlprice']);
 
 	  		$this->setvltotal($totals['vlprice'] + 
-	  		$this->getvlfreight());
+	  		(float)$this->getvlfreight());
 
-	  	}
-
-	  	public function getValues(){
-
-	  		$this->getCalculateTotal();
-
-	  		return parent::getValues();
 	  	}
 	   
 	}
