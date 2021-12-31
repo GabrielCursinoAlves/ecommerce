@@ -76,9 +76,9 @@
 	    public function getProducts($related = true){
 
 	    	$sql = new Sql();
-
+	    	
 	    	if($related === true){
-
+	    		
 	    		$results = $sql->select("SELECT *FROM tb_products 
 	    		WHERE idproduct IN(
 				SELECT a.idproduct FROM tb_products a

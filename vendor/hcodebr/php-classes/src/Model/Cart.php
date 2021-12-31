@@ -146,7 +146,7 @@
 
 	  	}
 
-	  	public function getProduct(){
+	  	public function getProducts(){
 
 	  		$sql = new Sql();
 
